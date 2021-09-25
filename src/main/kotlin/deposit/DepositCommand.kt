@@ -11,10 +11,10 @@ class DepositCommand @Inject constructor(
     private val outputter: Outputter,
     private val withdrawalLimiter: WithdrawalLimiter
 ): DoubleCommand(outputter) {
-    override val key: String = "예금"
+    override val key: String = "deposit"
     override fun handleAmount(amount: Double) {
         account.deposit(amount)
         withdrawalLimiter.recordDeposit(amount)
-        outputter.output("${account.username}님의 잔액: ${account.balance}");
+        outputter.output("${account.username}'s new balance is: ${account.balance}");
     }
 }

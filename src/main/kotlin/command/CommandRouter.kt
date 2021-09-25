@@ -16,14 +16,14 @@ class CommandRouter @Inject constructor(private val commands: Map<String, Comman
         val result = command.handleInput(splitInput.subList(1, splitInput.size))
 
         if (result.status == Command.Status.INVALID) {
-            println("$commandKey: 잘못된 값을 받았습니다.")
+            println("Invalid usage of \"$commandKey\". please try again.")
         }
 
         return result
     }
 
     private fun invalidCommand(input: String): Command.Result {
-        println("알 수 없는 입력 '$input'. 다시 시도해주세요.")
+        println("Couldn't understand \"$input\". please try again.")
 
         return Command.Result.invalid()
     }

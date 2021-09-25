@@ -9,12 +9,12 @@ class LogoutCommand @Inject constructor(
     ): Command {
     override fun handleInput(input: List<String>): Command.Result {
         return if (input.isEmpty()) {
-            outputter.output("로그아웃 했습니다.")
+            outputter.output("logged out.")
             Command.Result.inputCompleted()
         } else {
             Command.Result.invalid()
         }
     }
 
-    override val key: String = "로그아웃"
+    override val key: String = "logout"
 }

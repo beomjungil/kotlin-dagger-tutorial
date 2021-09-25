@@ -13,16 +13,16 @@ import withdraw.WithdrawCommand
 abstract class UserCommandsModule {
     @Binds
     @IntoMap
-    @StringKey("예금")
+    @StringKey("deposit")
     abstract fun depositCommand(command: DepositCommand?): Command?
 
     @Binds
     @IntoMap
-    @StringKey("출금")
+    @StringKey("withdraw")
     abstract fun withdrawCommand(command: WithdrawCommand?): Command?
 
     @Binds
     @IntoMap
-    @StringKey("로그아웃")
+    @StringKey("logout")
     abstract fun logoutCommand(command: LogoutCommand?): Command?
 }

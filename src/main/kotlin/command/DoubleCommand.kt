@@ -11,9 +11,9 @@ abstract class DoubleCommand constructor(
         val amount = arg.toDouble()
 
         if (amount == null) {
-            outputter.output("'$arg'은 잘못된 숫자입니다.");
+            outputter.output("'$arg' is not a valid number")
         } else if (amount <= 0) {
-            outputter.output("amount는 0보다 커야합니다.")
+            outputter.output("amount must be positive")
         } else {
             handleAmount(amount)
         }

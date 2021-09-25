@@ -6,9 +6,9 @@ import javax.inject.Inject
 
 class HelloWorldCommand @Inject constructor(private val outputter: Outputter): Command {
     override fun handleInput(input: List<String>): Command.Result {
-        outputter.output("세상아!")
+        outputter.output("World!")
         return Command.Result.handled()
     }
 
-    override val key: String = "안녕"
+    override val key: String = "hello"
 }

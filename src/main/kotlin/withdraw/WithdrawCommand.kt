@@ -17,7 +17,7 @@ class WithdrawCommand @Inject constructor(
         val remainingWithdrawalLimit = withdrawalLimiter.remainingWithdrawalLimit
 
         if ((amount - remainingWithdrawalLimit) > 0) {
-            outputter.output("'$amount' 를 출금할 수 없습니다. 최대 출금 한도는 '$remainingWithdrawalLimit' 입니다.")
+            outputter.output("You may not withdraw '$amount'; You may withdraw '$remainingWithdrawalLimit' more in this session.")
             return
         }
 
@@ -25,15 +25,15 @@ class WithdrawCommand @Inject constructor(
 
         if ((newBalance - minimumBalance) < 0) {
             outputter.output(
-                "'$amount' 출금 시 잔액이 부족합니다. 현재 잔액은 '${account.balance}'며, 최소 잔액은 '${minimumBalance}' 입니다."
+                "You don't have sufficient funds to withdraw '$amount'. your balance is '${account.balance}' and the minimum balance is '${minimumBalance}'."
             )
             return
         } else {
             account.withdraw(amount)
             withdrawalLimiter.recordWithdrawal(amount)
-            outputter.output("출금이 완료되었습니다. 현재 잔액은 '${account.balance}' 입니다.");
+            outputter.output("your new balance is: '${account.balance}'");
         }
     }
 
-    override val key: String = "출금"
+    override val key: String = "withdraw"
 }

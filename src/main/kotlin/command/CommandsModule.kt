@@ -13,12 +13,12 @@ import login.LoginCommand
 interface CommandsModule {
     @Binds
     @IntoMap
-    @StringKey("안녕")
+    @StringKey("hello")
     fun helloWorld(command: HelloWorldCommand): Command
 
     @Binds
     @IntoMap
-    @StringKey("로그인")
+    @StringKey("login")
     fun login(command: LoginCommand): Command
 
     @BindsOptionalOf
